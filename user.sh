@@ -4,6 +4,7 @@ curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 echo -e "\e[32m >>>>>>>installing Nodejs<<<<<<<\e]0m"
 yum install nodejs -y
 
+
 echo -e "\e[32m >>>>>>>add application user<<<<<<<\e]0m"
 useradd roboshop
 
