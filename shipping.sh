@@ -18,7 +18,7 @@ cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.ser
 
 echo -e "\e[32m >>>>>>>install mysql<<<<<<<\e]0m"
 yum install mysql -y
-echo -e "\e[32m >>>>>>>update password for mysql<<<<<<<\e]0m"
+echo -e "\e[32m >>>>>>>load schema for mysql<<<<<<<\e]0m"
 mysql -h mysql-dev.jdevops72.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 echo -e "\e[32m >>>>>>>start shipping service<<<<<<<\e]0m"
 systemctl daemon-reload
