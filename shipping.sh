@@ -14,7 +14,7 @@ echo -e "\e[32m >>>>>>>download dependencies<<<<<<<\e]0m"
 mvn clean package
 mv target/shipping-1.0.jar shipping.jar
 echo -e "\e[32m >>>>>>>copy shipping service file<<<<<<<\e]0m"
-cp shipping.service /etc/systemd/system/shipping.service
+cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service
 
 echo -e "\e[32m >>>>>>>install mysql<<<<<<<\e]0m"
 yum install mysql -y
