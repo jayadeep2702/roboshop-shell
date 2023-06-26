@@ -22,7 +22,7 @@ unzip /tmp/catalogue.zip
 echo -e "\e[32m >>>>>>>downloading dependencies<<<<<<<\e]0m"
 npm install
 
-echo -e "\e[32m >>>>>>>copy catalogue.service file<<<<<<<\e]0m"
+echo -e "\e[32m >>>>>>>copy catalogue.services file<<<<<<<\e]0m"
 cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service
 
 echo -e "\e[32m >>>>>>>start catalogue service<<<<<<<\e]0m"
