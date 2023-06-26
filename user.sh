@@ -34,4 +34,4 @@ echo -e "\e[32m >>>>>>>installing mongodb client<<<<<<<\e]0m"
 yum install mongodb-org-shell -y
 
 echo -e "\e[32m >>>>>>>load mongodb schema<<<<<<<\e]0m"
-mongo --host mongo-dev.jdevops72.online </app/schema/user.js
+mongo --host mongodb-dev.jdevops72.online </app/schema/user.js
