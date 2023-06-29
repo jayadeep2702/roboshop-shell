@@ -8,7 +8,7 @@ yum install nodejs -y
 
 
 echo -e "\e[32m >>>>>>>add application user<<<<<<<\e]0m"
-useradd ${a--_user}
+useradd ${app_user}
 
 echo -e "\e[32m >>>>>>>crating application directory<<<<<<<\e]0m"
 rm -rf /app
