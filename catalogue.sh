@@ -1,4 +1,6 @@
-source common.sh
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 
 echo -e "\e[32m>>>>>>>configure node js repo<<<<<<<\e]0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
@@ -24,7 +26,7 @@ echo -e "\e[32m >>>>>>>downloading dependencies<<<<<<<\e]0m"
 npm install
 
 echo -e "\e[32m >>>>>>>copy catalogue.services file<<<<<<<\e]0m"
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service
+cp ${script_path}/catalogue.service /etc/systemd/system/catalogue.service
 
 echo -e "\e[32m >>>>>>>start catalogue service<<<<<<<\e]0m"
 systemctl daemon-reload

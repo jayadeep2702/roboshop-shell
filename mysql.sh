@@ -1,3 +1,7 @@
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
+
 echo -e "\e[32m >>>>>>>Disable mysql 8 version<<<<<<<\e]0m"
 yum module disable mysql -y
 echo -e "\e[32m >>>>>>>configuring mysql repo<<<<<<<\e]0m"
