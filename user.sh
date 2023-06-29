@@ -1,6 +1,6 @@
-source common.sh
 
-dirname $0
+script_path=$(dirname $0)
+source ${script_path}/common.sh
 
 exit
 echo -e "\e[32m>>>>>>>configure node js repo<<<<<<<\e]0m"
