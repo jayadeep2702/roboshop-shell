@@ -17,6 +17,7 @@ cd /app
 echo -e "\e[32m >>>>>>>download dependencies<<<<<<<\e]0m"
 pip3.6 install -r requirements.txt
 echo -e "\e[32m >>>>>>>copy payment service file<<<<<<<\e]0m"
+sed -i -e "s|rabbitmq_user_passwd/${rabbitmq_user_passwd}|" ${script_path}/payment.service
 cp ${script_path}/payment.service /etc/systemd/system/payment.service
 echo -e "\e[32m >>>>>>>start payment service<<<<<<<\e]0m"
 systemctl daemon-reload
