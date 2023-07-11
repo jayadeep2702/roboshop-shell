@@ -8,6 +8,7 @@ yum install python36 gcc python3-devel -y
 echo -e "\e[32m >>>>>>>add user for the app<<<<<<<\e]0m"
 useradd ${app_user}
 echo -e "\e[32m >>>>>>>create a directory<<<<<<<\e]0m"
+rm -rf /app
 mkdir /app
 echo -e "\e[32m >>>>>>>download app content<<<<<<<\e]0m"
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment.zip
