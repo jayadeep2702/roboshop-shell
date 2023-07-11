@@ -7,29 +7,29 @@ function_nodejs() {
   print_head "configure node js repo"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-  echo -e "\e[32m >>>>>>>installing Nodejs<<<<<<<\e]0m"
+  print_head "installing Nodejs"
   yum install nodejs -y
 
 
-  echo -e "\e[32m >>>>>>>add application user<<<<<<<\e]0m"
+  print_headadd "application user"
   useradd ${app_user}
 
-  echo -e "\e[32m >>>>>>>crating application directory<<<<<<<\e]0m"
+  print_headcrating "application directory"
   rm -rf /app
   mkdir /app
 
-  echo -e "\e[32m >>>>>>>downloading App content<<<<<<<\e]0m"
+  print_head "downloading App content"
   curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
   cd /app
 
-  echo -e "\e[32m >>>>>>>unzip app content<<<<<<<\e]0m"
+  print_head "unzip app content"
   unzip /tmp/${component}.zip
 
-  echo -e "\e[32m >>>>>>>downloading dependencies<<<<<<<\e]0m"
+  print_head "downloading dependencies"
   npm install
-  echo -e "\e[32m >>>>>>>copying cart service file<<<<<<<\e]0m"
+  print_headcopying "cart service file"
   cp ${script_path}/cart.service /etc/systemd/system/${component}.service
-  echo -e "\e[32m >>>>>>>service cart start<<<<<<<\e]0m"
+  print_head "service cart start"
   systemctl daemon-reload
   systemctl enable ${component}
   systemctl start ${component}
