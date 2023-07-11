@@ -11,10 +11,10 @@ function_nodejs() {
   yum install nodejs -y
 
 
-  print_headadd "application user"
+  print_head add "application user"
   useradd ${app_user}
 
-  print_headcrating "application directory"
+  print_head "creating application directory"
   rm -rf /app
   mkdir /app
 
@@ -27,7 +27,7 @@ function_nodejs() {
 
   print_head "downloading dependencies"
   npm install
-  print_headcopying "cart service file"
+  print_head "copying cart service file"
   cp ${script_path}/cart.service /etc/systemd/system/${component}.service
   print_head "service cart start"
   systemctl daemon-reload
