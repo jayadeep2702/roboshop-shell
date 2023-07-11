@@ -1,7 +1,7 @@
 app_user=roboshop
 
 print_head() {
-  echo -e "\e[32m>>>>>>>$1<<<<<<<\e]0m"
+  echo -e "\e[35m>>>>>>>$1<<<<<<<\e]0m"
 }
 function_nodejs() {
   print_head "configure node js repo"
