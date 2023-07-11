@@ -7,6 +7,7 @@ yum install maven -y
 echo -e "\e[32m >>>>>>>add user for application<<<<<<<\e]0m"
 useradd ${app_user}
 echo -e "\e[32m >>>>>>>create directory<<<<<<<\e]0m"
+rm -rf /app
 mkdir /app
 echo -e "\e[32m >>>>>>>download application content<<<<<<<\e]0m"
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
