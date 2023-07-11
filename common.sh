@@ -1,7 +1,10 @@
 app_user=roboshop
 
+print_head() {
+  echo -e "\e[32m>>>>>>>$1<<<<<<<\e]0m"
+}
 function_nodejs() {
-  echo -e "\e[32m>>>>>>>configure node js repo<<<<<<<\e]0m"
+  print_head "configure node js repo"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
   echo -e "\e[32m >>>>>>>installing Nodejs<<<<<<<\e]0m"
