@@ -6,6 +6,7 @@ mysql_root_passwd=$1
 if [ -z "$mysql_root_passwd"]
 then
 echo mysql password is missing
+exit
 fi
 
 echo -e "\e[32m >>>>>>>Disable mysql 8 version<<<<<<<\e]0m"
