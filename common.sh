@@ -4,6 +4,7 @@ app_user=roboshop
 print_head() {
   echo -e "\e[35m>>>>>>>$1<<<<<<<\e]0m"
 }
+schema_setup() {
   if [ "$schema_setup" == "mongo" ]; then
     print_head "copy mongo repo"
     cp ${script_path}mongo.repo /etc/yum.repos.d/mongo.repo
@@ -13,6 +14,7 @@ print_head() {
     print_head "load mongodb schema"
     mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js
   fi
+}
 function_nodejs() {
   print_head "configure node js repo"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
