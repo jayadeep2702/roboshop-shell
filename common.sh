@@ -44,6 +44,6 @@ function_nodejs() {
   systemctl daemon-reload
   systemctl enable ${component}
   systemctl start ${component}
-
+  schema_setup
 }
 }
