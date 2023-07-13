@@ -39,7 +39,7 @@ function_nodejs() {
   npm install
   print_head "copying cart service file"
   cp ${script_path}/cart.service /etc/systemd/system/${component}.service
-  # shellcheck disable=SC1073
+
   print_head "service cart start"
   systemctl daemon-reload
   systemctl enable ${component}
