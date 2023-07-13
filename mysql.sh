@@ -1,8 +1,9 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
+mysql_root_passwd=$1
 
-if [-z "$mysql_root_passwd"]
+if [ -z "$mysql_root_passwd"]
 then
 echo mysql password is missing
 fi
@@ -17,4 +18,4 @@ echo -e "\e[32m >>>>>>>start mysql service<<<<<<<\e]0m"
 systemctl enable mysqld
 systemctl restart mysqld
 echo -e "\e[32m >>>>>>>update password for mysql<<<<<<<\e]0m"
-mysql_secure_installation --set-root-pass RoboShop@1
+mysql_secure_installation --set-root-pass $mysql_root_passwd
