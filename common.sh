@@ -13,7 +13,6 @@ print_head() {
     print_head load mongodb schema"
     mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js
   fi
-
 function_nodejs() {
   print_head "configure node js repo"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
