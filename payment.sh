@@ -3,6 +3,11 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 rabbitmq_user_passwd=$1
 
+if [-z "$rabbitmq_user_passwd"]
+then
+echo Roboshop Appuser passwd is missing
+fi
+
 echo -e "\e[32m >>>>>>>install python<<<<<<<\e]0m"
 yum install python36 gcc python3-devel -y
 echo -e "\e[32m >>>>>>>add user for the app<<<<<<<\e]0m"
