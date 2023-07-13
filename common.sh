@@ -10,7 +10,7 @@ print_head() {
     print_head "installing mongodb client"
     yum install mongodb-org-shell -y
 
-    print_head load mongodb schema"
+    print_head "load mongodb schema"
     mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js
   fi
 function_nodejs() {
