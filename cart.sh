@@ -5,4 +5,3 @@ source ${script_path}/common.sh
 component=cart
 
 function_nodejs
-
