@@ -65,12 +65,12 @@ function_nodejs() {
 }
 
 func_java() {
-func_print_head"install Maven"
+func_print_head "install Maven"
 yum install maven -y
 
 func_app_prereq
 
-func_print_head"download dependencies"
+func_print_head "download dependencies"
 mvn clean package
 mv target/${component}-1.0.jar ${component}.jar
 
