@@ -8,5 +8,5 @@ echo mysql password is missing
 exit
 fi
 component="shipping"
-func_schema_setup=mysql
+func_schema_setup="mysql"
 func_java
