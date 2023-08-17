@@ -25,24 +25,24 @@ func_schema_setup() {
 
 
 func_app_prereq() {
-func_print_head"craete  application user"
-useradd ${app_user}
-func_print_head"create application directory"
-rm -rf /app
-mkdir /app
-func_print_head"download application content"
-curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
-cd /app
-func_print_head"unzip application content"
-unzip /tmp/${component}.zip
-cd /app
+ func_print_head"craete  application user"
+ useradd ${app_user}
+ func_print_head"create application directory"
+ rm -rf /app
+ mkdir /app
+ func_print_head"download application content"
+ curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
+ cd /app
+ func_print_head"unzip application content"
+ unzip /tmp/${component}.zip
+ cd /app
 }
 
 func_systemd_setup() {
-  func_print_head"setup systemd  service"
+  func_print_head "setup systemd  service"
   cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
-  func_print_head"start ${component} service "
+  func_print_head "start ${component} service "
   systemctl daemon-reload
   systemctl enable ${component}
   systemctl restart ${component}
@@ -65,15 +65,15 @@ function_nodejs() {
 }
 
 func_java() {
-func_print_head "install Maven"
-yum install maven -y
+ func_print_head "install Maven"
+ yum install maven -y
 
-func_app_prereq
+ func_app_prereq
 
-func_print_head "download dependencies"
-mvn clean package
-mv target/${component}-1.0.jar ${component}.jar
+ func_print_head "download dependencies"
+ mvn clean package
+ mv target/${component}-1.0.jar ${component}.jar
 
-func_schema_setup
-func_systemd_setup
+ func_schema_setup
+ func_systemd_setup
 }
