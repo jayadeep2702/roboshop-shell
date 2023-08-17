@@ -15,9 +15,9 @@ func_schema_setup() {
     mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js
   fi
   if [ "$schema_setup" == "mysql" ]; then
-    func_print_head"install mysql"
+    func_print_head "install mysql"
     yum install mysql -y
-    func_print_head"load schema for mysql"
+    func_print_head "load schema for mysql"
 
     mysql -h mysql-dev.jdevops72.online -uroot -p${mysql-_root_passwd} < /app/schema/${component}.sql
   fi
@@ -70,7 +70,7 @@ func_java() {
 
  func_app_prereq
 
- func_print_head "download dependencies"
+ func_print_head "download Maven dependencies"
  mvn clean package
  mv target/${component}-1.0.jar ${component}.jar
 
