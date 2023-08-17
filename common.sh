@@ -25,15 +25,15 @@ func_schema_setup() {
 
 
 func_app_prereq() {
- func_print_head"craete  application user"
+ func_print_head "craete  application user"
  useradd ${app_user}
- func_print_head"create application directory"
+ func_print_head "create application directory"
  rm -rf /app
  mkdir /app
- func_print_head"download application content"
+ func_print_head "download application content"
  curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
  cd /app
- func_print_head"unzip application content"
+ func_print_head "unzip application content"
  unzip /tmp/${component}.zip
  cd /app
 }
