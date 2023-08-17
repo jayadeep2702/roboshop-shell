@@ -14,13 +14,13 @@ func_schema_setup() {
     func_print_head "load mongodb schema"
     mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js
   fi
- if [ "$schema_setup" == "mysql" ]; then
-   func_print_head"install mysql"
-   yum install mysql -y
-   func_print_head"load schema for mysql"
+  if [ "$schema_setup" == "mysql" ]; then
+    func_print_head"install mysql"
+    yum install mysql -y
+    func_print_head"load schema for mysql"
 
-   mysql -h mysql-dev.jdevops72.online -uroot -p${mysql-_root_passwd} < /app/schema/${component}.sql
-   fi
+    mysql -h mysql-dev.jdevops72.online -uroot -p${mysql-_root_passwd} < /app/schema/${component}.sql
+  fi
  }
 
 
