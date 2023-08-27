@@ -16,23 +16,23 @@ func_status_check() {
 func_schema_setup() {
   if [ "$schema_setup" == "mongo" ]; then
     func_print_head "copy mongo repo"
-    cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>log_file
+    cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
 
     func_status_check
     func_print_head "installing mongodb client"
-    yum install mongodb-org-shell -y &>>log_file
+    yum install mongodb-org-shell -y &>>$log_file
     func_status_check
 
     func_print_head "load mongodb schema"
-    mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js &>>log_file
+    mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js &>>$log_file
     func_status_check
   fi
   if [ "${schema_setup} " == "mysql" ]; then
     func_print_head "install mysql"
-    yum install mysql -y &>>log_file
+    yum install mysql -y &>>$log_file
     func_status_check
     func_print_head "load schema for mysql"
-    mysql -h mysql-dev.jdevops72.online -uroot -p${mysql-_root_passwd} < /app/schema/${component}.sql &>>log_file
+    mysql -h mysql-dev.jdevops72.online -uroot -p${mysql-_root_passwd} < /app/schema/${component}.sql &>>$log_file
     func_status_check
   fi
  }
@@ -40,49 +40,49 @@ func_schema_setup() {
 
 func_app_prereq() {
  func_print_head "create  application user"
- id ${app_user} &>>log_file
+ id ${app_user} &>>$log_file
  if [ $? -ne 0 ]; then
- useradd ${app_user} &>>log_file
+ useradd ${app_user} &>>$log_file
  fi
  func_status_check
  func_print_head "create application directory"
- rm -rf /app &>>log_file
- mkdir /app &>>log_file
+ rm -rf /app &>>$log_file
+ mkdir /app &>>$log_file
  func_status_check
  func_print_head "download application content"
- curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>log_file
+ curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
  func_status_check
  cd /app
  func_print_head "unzip application content"
- unzip /tmp/${component}.zip &>>log_file
+ unzip /tmp/${component}.zip &>>$log_file
  func_status_check
 
 }
 
 func_systemd_setup() {
   func_print_head "setup systemd  service"
-  cp ${script_path}/${component}.service /etc/systemd/system/${component}.service &>>log_file
+  cp ${script_path}/${component}.service /etc/systemd/system/${component}.service &>>$log_file
   func_status_check
 
   func_print_head "start ${component} service "
-  systemctl daemon-reload &>>log_file
-  systemctl enable ${component} &>>log_file
-  systemctl restart ${component} &>>log_file
+  systemctl daemon-reload &>>$log_file
+  systemctl enable ${component} &>>$log_file
+  systemctl restart ${component} &>>$log_file
   func_status_check
 }
 
 function_nodejs() {
   func_print_head "configure node js repo"
-  curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>log_file
+  curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
   func_status_check
 
   func_print_head "installing Nodejs"
-  yum install nodejs -y &>>log_file
+  yum install nodejs -y &>>$log_file
   func_status_check
   func_app_prereq
 
   func_print_head "downloading dependencies"
-  npm install &>>log_file
+  npm install &>>$log_file
   func_status_check
 
   func_schema_setup
@@ -91,15 +91,15 @@ function_nodejs() {
 
 func_java() {
  func_print_head "install Maven"
- yum install maven -y &>>log_file
+ yum install maven -y &>>$log_file
  func_status_check
 
  func_app_prereq
 
  func_print_head "download Maven dependencies"
- mvn clean package &>>log_file
+ mvn clean package &>>$log_file
  func_status_check
- mv target/${component}-1.0.jar ${component}.jar &>>log_file
+ mv target/${component}-1.0.jar ${component}.jar &>>$log_file
  func_status_check
 
  func_schema_setup
