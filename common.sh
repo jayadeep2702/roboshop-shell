@@ -40,7 +40,10 @@ func_schema_setup() {
 
 func_app_prereq() {
  func_print_head "create  application user"
+ id ${app_user}
+ if [ $? -ne 0 ]; then
  useradd ${app_user}
+ fi
  func_status_check
  func_print_head "create application directory"
  rm -rf /app
