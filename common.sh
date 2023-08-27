@@ -16,7 +16,7 @@ func_status_check() {
 func_schema_setup() {
   if [ "$schema_setup" == "mongo" ]; then
     func_print_head "copy mongo repo"
-    cp ${script_path}mongo.repo /etc/yum.repos.d/mongo.repo
+    cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
     func_status_check
     func_print_head "installing mongodb client"
