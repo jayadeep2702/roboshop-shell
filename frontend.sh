@@ -3,19 +3,19 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 
-func_print_head"installing nginx"
+func_print_head "installing nginx"
 yum install nginx -y &>>$log_file
 func_status_check $?
 
-func_print_head"copying roboshop configure file"
+func_print_head "copying roboshop configure file"
 cp roboshop.conf /etc/nginx/default.d/roboshop.conf &>>$log_file
 func_status_check $?
 
-func_print_head"Remove default content"
+func_print_head "Remove default content"
 rm -rf /usr/share/nginx/html/* &>>$log_file
 func_status_check $?
 
-func_print_head"Downloading app content"
+func_print_head "Downloading app content"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>$log_file
 func_status_check $?
 
