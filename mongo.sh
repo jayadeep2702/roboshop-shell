@@ -3,7 +3,7 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 
-func_print_head"Copying mongorepo file"
+func_print_head "Copying mongorepo file"
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
 func_status_check $?
 
