@@ -21,7 +21,7 @@ func_schema_setup() {
     func_status_check $?
     func_print_head "installing mongodb client"
     yum install mongodb-org-shell -y &>>$log_file
-    +3-++
+
 
     func_print_head "load mongodb schema"
     mongo --host mongodb-dev.jdevops72.online </app/schema/${component}.js &>>$log_file
